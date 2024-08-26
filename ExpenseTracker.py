@@ -38,18 +38,18 @@ class ExpenseTrackerGUI:
     def __init__(self, tracker):
         self.tracker = tracker
 
-        # Initialize the main window
+        
         ctk.set_appearance_mode("System")  # Modes: "System" (default), "Dark", "Light"
         ctk.set_default_color_theme("blue")  # Themes: "blue" (default), "green", "dark-blue"
 
         self.root = ctk.CTk()  # Create the main window
         self.root.title("Expense Tracker")
 
-        # Set up the main frame
+        
         self.frame = ctk.CTkFrame(master=self.root)
         self.frame.pack(pady=20, padx=20, fill="both", expand=True)
 
-        # Widgets for adding expenses
+        
         self.amount_label = ctk.CTkLabel(master=self.frame, text="Amount (£):")
         self.amount_label.grid(row=0, column=0, pady=5, padx=10)
 
@@ -77,7 +77,7 @@ class ExpenseTrackerGUI:
         self.add_button = ctk.CTkButton(master=self.frame, text="Add Expense", command=self.add_expense)
         self.add_button.grid(row=4, column=0, columnspan=2, pady=10)
 
-        # Widgets for viewing expenses
+        
         self.view_button = ctk.CTkButton(master=self.frame, text="View Expenses", command=self.view_expenses)
         self.view_button.grid(row=5, column=0, columnspan=2, pady=10)
 
@@ -92,22 +92,20 @@ class ExpenseTrackerGUI:
 
             self.tracker.add_expense(amount, category, date, description)
 
-            # Clear the entries after adding
+            
             self.amount_entry.delete(0, ctk.END)
             self.category_entry.delete(0, ctk.END)
             self.date_entry.delete(0, ctk.END)
             self.description_entry.delete(0, ctk.END)
 
-            tkmb.showinfo("Success", "Expense added successfully!")  # Use tkinter messagebox
+            tkmb.showinfo("Success", "Expense added successfully!")  #
         except ValueError:
-            tkmb.showerror("Error", "Please enter valid data!")  # Use tkinter messagebox
+            tkmb.showerror("Error", "Please enter valid data!")  
 
     def view_expenses(self):
-        # Open the Excel file with the default application
+       
         try:
-            os.startfile(self.tracker.filename)  # For Windows
-            # For macOS: os.system(f'open "{self.tracker.filename}"')
-            # For Linux: os.system(f'xdg-open "{self.tracker.filename}"')
+            os.startfile(self.tracker.filename) 
         except Exception as e:
             tkmb.showerror("Error", f"Failed to open the file: {e}")
 
