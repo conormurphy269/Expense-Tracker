@@ -3,7 +3,7 @@ import pandas as pd
 from datetime import datetime
 import os
 import tkinter.messagebox as tkmb
-import webbrowser  # For opening files
+import webbrowser  
 
 class ExpenseTracker:
     def __init__(self, filename='expenses.xlsx'):
@@ -50,7 +50,7 @@ class ExpenseTrackerGUI:
         self.frame.pack(pady=20, padx=20, fill="both", expand=True)
 
         # Widgets for adding expenses
-        self.amount_label = ctk.CTkLabel(master=self.frame, text="Amount ($):")
+        self.amount_label = ctk.CTkLabel(master=self.frame, text="Amount (£):")
         self.amount_label.grid(row=0, column=0, pady=5, padx=10)
 
         self.amount_entry = ctk.CTkEntry(master=self.frame)
